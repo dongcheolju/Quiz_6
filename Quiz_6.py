@@ -13,16 +13,16 @@ def validate_korean_resident_id(resident_id):
 
     remainder = total % 11                                           # 합을 11로 나눈 나머지
     result = 11 - remainder                                          # 11에서 나머지를 빼서 result 변수에 저장
-
+    #유효성 검사 실행
     if result == 10:                                                 # result가 10인 경우, 마지막 자리(검증 코드)가 0
         return int(resident_id[-1]) == 0
     elif result == 11:                                               # result가 11인 경우, 마지막 자리(검증 코드)가 1
         return int(resident_id[-1]) == 1
-    else:
+    else:                                                            # result가 10과 11이 아닌 경우, 검증 코드가 곧 result
         return int(resident_id[-1]) == result
 
 # 주민등록번호 유효성 검사 실행 (하이픈 포함)
-resident_id = input("주민등록번호 입력 (하이픈 포함)\n:")
+resident_id = input("주민등록번호 입력 (하이픈 포함)\n:")                   # 사용자에게 주민번호 입력 받기
 if validate_korean_resident_id(resident_id):
     print("유효한 주민등록번호입니다.")
 else:
